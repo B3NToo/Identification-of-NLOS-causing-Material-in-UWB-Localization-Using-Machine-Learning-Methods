@@ -10,7 +10,14 @@ import matplotlib
 from matplotlib import pyplot as plt
 from matplotlib.ticker import FormatStrFormatter
 
-from praser import deleteNAN
+from utility.praser import deleteNAN
+
+FONTSIZE = 8;   TICK_SIZE = 6
+# set window background to white
+plt.rcParams['figure.facecolor'] = 'w'
+# set the labelsize of xtick and ytick
+matplotlib.rc('xtick', labelsize=TICK_SIZE) 
+matplotlib.rc('ytick', labelsize=TICK_SIZE)
 
 
 def plot_obs(ob_x,obstacle):
@@ -26,7 +33,7 @@ def plot_obs(ob_x,obstacle):
         ob_x.plot([obstacle[i,0], obstacle[i+4,0]], [obstacle[i,1], obstacle[i+4,1]], [obstacle[i,2], obstacle[i+4,2]], linewidth=1, label='_nolegend_', color='k')
 
 
-def load_data(folder):
+def visualize_nlos(folder):
     # search for txt files in the folder
     for file in os.listdir(folder):
         if file.endswith(".txt"):
@@ -45,7 +52,9 @@ def load_data(folder):
 
     pos = np.array(pos)     # [an1_p, an2_p, tag_p]
     quat = np.array(quat)   # [an1_quat, an2_quat, tag_quat]
-    an1_p = pos[0,:]; an2_p = pos[1,:]; tag_p = pos[2,:]
+    an1_p = pos[0,:]; 
+    an2_p = pos[1,:]; 
+    tag_p = pos[2,:]
     obs_up = pos[3:,:]
     obs_bt = np.copy(obs_up);  obs_bt[:,2] = 0 
     obstacle = np.concatenate((obs_up, obs_bt), axis=0)
@@ -56,12 +65,6 @@ def load_data(folder):
             data_csv = os.path.join(folder, file)
             
     df = pd.read_csv(data_csv)
-    return df
-
-
-
-def visualize_nlos(folder):
-    df = load_data(folder)
 
     # extract data
     tdoa12 = deleteNAN(np.array(df['tdoa12']))
@@ -88,7 +91,7 @@ def visualize_nlos(folder):
 
     # visualization
     # visualize the anchor, tag and obstacle
-    fig_ob = plt.figure(figsize=(10, 10))
+    fig_ob = plt.figure(figsize=(6, 6))
     ob_x = fig_ob.add_subplot(111, projection = '3d')
     # make the panes transparent
     ob_x.xaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
@@ -108,9 +111,9 @@ def visualize_nlos(folder):
     an1_dot = ob_x.scatter(an1_p[0],   an1_p[1],  an1_p[2], s = 100, marker='o',color='red', label = 'Anchor 1')
     an2_dot = ob_x.scatter(an2_p[0],   an2_p[1],  an2_p[2], s = 100, marker='o',color='orange', label = 'Anchor 2')
     # plot the line segement
-    ob_x.plot([tag_p[0], an1_p[0]], [tag_p[1], an1_p[1]], [tag_p[2], an1_p[2]], linestyle ='--', color='steelblue', label='_nolegend_')
-    ob_x.plot([tag_p[0], an2_p[0]], [tag_p[1], an2_p[1]], [tag_p[2], an2_p[2]], linestyle ='--', color='steelblue', label='_nolegend_')
-    ob_x.plot([an1_p[0], an2_p[0]], [an1_p[1], an2_p[1]], [an1_p[2], an2_p[2]], linestyle ='--', color='orangered', label='_nolegend_')
+    ob_x.plot([tag_p[0], an1_p[0]], [tag_p[1], an1_p[1]], [tag_p[2], an1_p[2]], linestyle ='--', color='grey', label='_nolegend_')
+    ob_x.plot([tag_p[0], an2_p[0]], [tag_p[1], an2_p[1]], [tag_p[2], an2_p[2]], linestyle ='--', color='grey', label='_nolegend_')
+    ob_x.plot([an1_p[0], an2_p[0]], [an1_p[1], an2_p[1]], [an1_p[2], an2_p[2]], linestyle ='--', color='grey', label='_nolegend_')
     ob_x.set_xlim3d(-3.5, 3.5)  
     ob_x.set_ylim3d(-3.5, 3.5)  
     ob_x.set_zlim3d(0.0, 3.0)  
@@ -120,7 +123,4 @@ def visualize_nlos(folder):
     ob_x.set_box_aspect((1, 1, 0.35))               # xy aspect ratio is 1:1, but change z axis
     plt.legend(loc='best', fontsize=FONTSIZE)
     ob_x.view_init(24, -58)
-
-
-
     return fig_ob
