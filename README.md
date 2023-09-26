@@ -55,6 +55,7 @@ The silhouette score measures how similar each data point is to its own cluster 
 
 
 Distortion Score Elbow for K-means Clustering:
+![Elbow Distortion](figures/elbow_plot.png?raw=true "Elbow Distortion")
 
 
 
