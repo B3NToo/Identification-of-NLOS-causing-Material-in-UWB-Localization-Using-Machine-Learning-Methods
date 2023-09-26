@@ -1,61 +1,54 @@
-# Identification-of-NLOS-causing-Material-in-UWB-Localization-Using-Machine-Learning-Methods
+# Identification of NLOS-causing Material in UWB Localization Using Machine Learning Methods 📡🤖
 
-Research Result Table
+## Research Result Table 📊
 
+### Baseline MLP Binary Classification Experiment on Big Data
 
-Baseline MLP Binary Classification Experiment on Big Data - Results
-| Metric      | Value                  |
-|-------------|------------------------|
-| Accuracy    | 99.94432691237056%     |
-| Precision   | 99.95557776667222%     |
-| Recall      | 99.94447837432681%     |
-| F1-Score    | 0.9994447837432681    |
+| Metric    | Value                |
+|-----------|----------------------|
+| Accuracy  | 99.94%               |
+| Precision | 99.96%               |
+| Recall    | 99.94%               |
+| F1-Score  | 0.9994               |
 
+### Baseline MLP Material Classification Experiment
 
-Baseline MLP Material Classification Experiment - Results
-| Metric      | Value                  |
-|-------------|------------------------|
-| Accuracy    | 73.14330252755818%     |
-| Precision   | 73.04555975360775%     |
-| Recall      | 73.1378535499772%      |
-| F1-Score    | 0.7299504648938905    |
+| Metric    | Value                |
+|-----------|----------------------|
+| Accuracy  | 73.14%               |
+| Precision | 73.05%               |
+| Recall    | 73.14%               |
+| F1-Score  | 0.7299               |
 
+### Baseline MLP Multiclass Classification Experiment
 
-Baseline MLP Multiclass Classification Experiment
-| Metric      | Value                  |
-|-------------|------------------------|
-| Accuracy    | 86.68856474780091%     |
-| Precision   | 76.75364297422286%     |
-| Recall      | 77.23664103006249%     |
-| F1-Score    | 0.7689952563129354    |
+| Metric    | Value                |
+|-----------|----------------------|
+| Accuracy  | 86.69%               |
+| Precision | 76.75%               |
+| Recall    | 77.24%               |
+| F1-Score  | 0.7690               |
 
+### Baseline MLP Material Classification Experiment on Error Data
 
-Baseline MLP Material Classification Experiment on Error Data
-| Metric      | Value                  |
-|-------------|------------------------|
-| Accuracy    | 81.11012136733103%     |
-| Precision   | 81.28917834223172%     |
-| Recall      | 81.27023588258237%     |
-| F1-Score    | 0.8121027273765429    |
+| Metric    | Value                |
+|-----------|----------------------|
+| Accuracy  | 81.11%               |
+| Precision | 81.29%               |
+| Recall    | 81.27%               |
+| F1-Score  | 0.8121               |
 
+## Clustering
 
+### Within-Cluster Sum of Squares (WCSS)
+WCSS measures the variance of data points within each cluster. It quantifies how compact the clusters are. Smaller WCSS values indicate tighter clusters.
 
-Clustering
+![Within-Cluster Sum of Squares (WCSS)](figures/WCSS.png?raw=true "Within-Cluster Sum of Squares (WCSS)")
 
-Within-Cluster Sum of Squares (WCSS):
-WCSS measures the variance of data points within each cluster. It quantifies how compact the clusters are. Smaller WCSS values indicate tighter clusters
-
-![Within-Cluster Sum of Squares (WCSS)](figures/WCSS.png?raw=true "Within-Cluster Sum of Squares (WCS)")
-
-
-Silhouette Score:
+### Silhouette Score
 The silhouette score measures how similar each data point is to its own cluster compared to other clusters. A higher silhouette score indicates that the data points are well-separated into clusters.
 
-![Silhouette Score](figures/silouette_score.png?raw=true "Silhouette Score")
+![Silhouette Score](figures/silhouette_score.png?raw=true "Silhouette Score")
 
-
-Distortion Score Elbow for K-means Clustering:
+### Distortion Score Elbow for K-means Clustering
 ![Elbow Distortion](figures/elbow_plot.png?raw=true "Elbow Distortion")
-
-
-
