@@ -45,12 +45,13 @@ Clustering
 Within-Cluster Sum of Squares (WCSS):
 WCSS measures the variance of data points within each cluster. It quantifies how compact the clusters are. Smaller WCSS values indicate tighter clusters
 
-![Alt text](relative%20path/figures/WCSS.png?raw=true "Within-Cluster Sum of Squares (WCSS)")
+![Alt text](figures/WCSS.png?raw=true "Within-Cluster Sum of Squares (WCSS)")
 
 
 Silhouette Score:
 The silhouette score measures how similar each data point is to its own cluster compared to other clusters. A higher silhouette score indicates that the data points are well-separated into clusters.
-![Alt text](relative%20path/figures/silhouette_score.png?raw=true "Silhouette Score")
+
+![Alt text](figures/silhouette_score.png?raw=true "Silhouette Score")
 
 
 Distortion Score Elbow for K-means Clustering:
