@@ -48,7 +48,7 @@ WCSS measures the variance of data points within each cluster. It quantifies how
 ### Silhouette Score
 The silhouette score measures how similar each data point is to its own cluster compared to other clusters. A higher silhouette score indicates that the data points are well-separated into clusters.
 
-![Silhouette Score](figures/silhouette_score.png?raw=true "Silhouette Score")
+![Silhouette Score](figures/silouette_score.png?raw=true "Silhouette Score")
 
 ### Distortion Score Elbow for K-means Clustering
 ![Elbow Distortion](figures/elbow_plot.png?raw=true "Elbow Distortion")
