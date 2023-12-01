@@ -91,7 +91,7 @@ def visualize_nlos(folder):
 
     # visualization
     # visualize the anchor, tag and obstacle
-    fig_ob = plt.figure(figsize=(6, 6))
+    fig_ob = plt.figure(figsize=(6, 10))
     ob_x = fig_ob.add_subplot(111, projection = '3d')
     # make the panes transparent
     ob_x.xaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
@@ -108,12 +108,12 @@ def visualize_nlos(folder):
     plot_obs(ob_x,obstacle)
 
     tag_dot = ob_x.scatter(tag_p[0],   tag_p[1],  tag_p[2], s = 100, marker='o',color='navy', label = 'Tag position')
-    an1_dot = ob_x.scatter(an1_p[0],   an1_p[1],  an1_p[2], s = 100, marker='o',color='red', label = 'Anchor 1')
-    an2_dot = ob_x.scatter(an2_p[0],   an2_p[1],  an2_p[2], s = 100, marker='o',color='orange', label = 'Anchor 2')
+    an1_dot = ob_x.scatter(an1_p[0],   an1_p[1],  an1_p[2], s = 100, marker='o',color='red', label = 'Anchor')
+    an2_dot = ob_x.scatter(an2_p[0],   an2_p[1],  an2_p[2], s = 100, marker='o',color='red', label = '_nolegend_')
     # plot the line segement
     ob_x.plot([tag_p[0], an1_p[0]], [tag_p[1], an1_p[1]], [tag_p[2], an1_p[2]], linestyle ='--', color='grey', label='_nolegend_')
     ob_x.plot([tag_p[0], an2_p[0]], [tag_p[1], an2_p[1]], [tag_p[2], an2_p[2]], linestyle ='--', color='grey', label='_nolegend_')
-    ob_x.plot([an1_p[0], an2_p[0]], [an1_p[1], an2_p[1]], [an1_p[2], an2_p[2]], linestyle ='--', color='grey', label='_nolegend_')
+    ob_x.plot([an1_p[0], an2_p[0]], [an1_p[1], an2_p[1]], [an1_p[2], an2_p[2]], linestyle ='--', color='red', label='_nolegend_')
     ob_x.set_xlim3d(-3.5, 3.5)  
     ob_x.set_ylim3d(-3.5, 3.5)  
     ob_x.set_zlim3d(0.0, 3.0)  
@@ -121,6 +121,6 @@ def visualize_nlos(folder):
     ob_x.set_ylabel(r'Y [m]', fontsize = FONTSIZE)
     ob_x.set_zlabel(r'Z [m]', fontsize = FONTSIZE)
     ob_x.set_box_aspect((1, 1, 0.35))               # xy aspect ratio is 1:1, but change z axis
-    plt.legend(loc='best', fontsize=FONTSIZE)
+    plt.legend(loc='best', fontsize=FONTSIZE, ncol=3)
     ob_x.view_init(24, -58)
     return fig_ob
